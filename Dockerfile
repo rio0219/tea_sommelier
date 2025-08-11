@@ -2,11 +2,10 @@ FROM ruby:3.3
 
 WORKDIR /app
 
-# 必要なgem
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
+
 RUN bundle install
 
-# アプリファイル
 COPY . .
 
 EXPOSE 4567
