@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>お茶ソムリエAI</title>
+</head>
+<body>
+  <h1>🍵 お茶ソムリエAI</h1>
+  <form action="/recommend" method="post">
+    <label>今の気分や状況を入力してください:</label><br>
+    <textarea name="situation" rows="3" cols="40"></textarea><br><br>
+    <button type="submit">おすすめを聞く</button>
+  </form>
+
+  <% if @recommendation %>
+    <h2>おすすめのお茶</h2>
+    <p><%= @recommendation %></p>
+  <% end %>
+</body>
+</html>
