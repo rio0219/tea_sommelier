@@ -8,17 +8,13 @@ class TeaAI
   def recommend_tea(situation)
     prompt = "あなたはお茶ソムリエです。次の状況に合うお茶と簡単な説明を提案してください。\n状況: #{situation}"
 
-    response = @client.chat(
-      parameters: {
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: "あなたはお茶の専門家です。" },
-          { role: "user", content: prompt }
-        ],
-        temperature: 0.7
-      }
+    completion = @client.completions.create(
+      model: "gpt-4o-mini",
+      prompt: prompt,
+      max_tokens: 150,
+      temperature: 0.7
     )
 
-    response.dig("choices", 0, "message", "content")
+    completion.choices[0].text.strip
   end
 end
